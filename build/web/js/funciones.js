@@ -24,6 +24,7 @@ function procesarLogin(){
             document.getElementById("error").innerHTML="<p style='color: red; fontsize: 18px;'>Usurio o contraseña incorrecta</p>";
         } else {
             contenido= "["+contenido+"]";
+			console.log(contenido);
             logi=JSON.parse(contenido);
             var rol="";
             var usu="";
@@ -63,6 +64,8 @@ function listarMateria() {
         var inicio = respuesta.indexOf('[');
         var fin = respuesta.indexOf(']');
         var contenido = respuesta.substring(inicio, fin+1);
+		// TODO:
+		console.log(contenido);
         materia=JSON.parse(contenido);
         
     } else{
