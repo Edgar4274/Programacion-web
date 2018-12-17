@@ -58,4 +58,26 @@ public class TablaGrupo {
         
         return null;
     }
+    
+    public List listarGrupo(String con){
+        List<Grupo> salida= new ArrayList<>();
+        String sql = "select g.id_grup, grupo, materia from persona p join lisgrup l on p.id_per=l.id_per join grupo g on l.id_grup=g.id_grup join materia m on g.id_mat=m.id_mat where p.id_per='"+con+"'";
+        try {
+            rs = st.executeQuery(sql);
+            
+            while (rs.next()) {
+                Grupo g = new Grupo();
+                g.setId(rs.getString("id_grup"));
+                g.setGrupo(rs.getString("grupo"));
+                g.setMateria(rs.getString("materia"));
+                salida.add(g);
+            }
+            return salida;
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+        
+        return null;
+    }
 }

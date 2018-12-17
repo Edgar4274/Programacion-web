@@ -52,7 +52,7 @@
                         <a class="nav-link" href="#" onclick="materiasAl()">Materias <i class="fa fa-caret-down" onclick="materiasAl()"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Examenes <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" onclick="materiasDis()">Mis materias <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Materias disponibles <i class="fa fa-caret-down"></i> <span class="sr-only">(current)</span></a>
