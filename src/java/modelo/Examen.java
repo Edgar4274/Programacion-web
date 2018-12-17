@@ -7,51 +7,49 @@ package modelo;
 
 /**
  *
- * @author const
+ * @author edal_
  */
 public class Examen {
-	private int id;
-	private String nombre;
-	private int unidad;
-	private int idGrupo;
+    private String id;
+    private String examen;
+    private String unidad;
+    private String grupo;
 
-	public int getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getExamen() {
+        return examen;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setExamen(String examen) {
+        this.examen = examen;
+    }
 
-	public int getUnidad() {
-		return unidad;
-	}
+    public String getUnidad() {
+        return unidad;
+    }
 
-	public void setUnidad(int unidad) {
-		this.unidad = unidad;
-	}
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
 
-	public int getIdGrupo() {
-		return idGrupo;
-	}
+    public String getGrupo() {
+        return grupo;
+    }
 
-	public void setIdGrupo(int idGrupo) {
-		this.idGrupo = idGrupo;
-	}
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
 
-	@Override
-	public String toString() {
-		return "Examen{" + "id=" + id + ", nombre=" + nombre + ", unidad=" + unidad + ", idGrupo=" + idGrupo + '}';
-	}
-	
-	
-	
+    @Override
+    public String toString() {
+        return "Examen{" + "id=" + id + ", examen=" + examen + ", unidad=" + unidad + ", grupo=" + grupo + '}';
+    }
+    
 }

@@ -71,10 +71,10 @@ public class TablaDocente {
             rs = st.executeQuery(sql);
             while (rs.next()) {
                 Examen examen = new Examen();
-                examen.setId(Integer.parseInt(rs.getString("id_exa")));
-                examen.setNombre(rs.getString("nombre"));
-				examen.setUnidad(Integer.parseInt(rs.getString("unidad")));
-				examen.setIdGrupo(Integer.parseInt(rs.getString("id_grup")));
+                examen.setId(rs.getString("id_exa"));
+                examen.setExamen(rs.getString("nombre"));
+				examen.setUnidad(rs.getString("unidad"));
+				examen.setGrupo(rs.getString("id_grup"));
                 salida.add(examen);
             }
             return salida;

@@ -33,7 +33,7 @@
             }
         </style>
     </head>
-    <body onload="cargaDocente();">
+    <body onload="alumnoDoc();">
         <%! public String usuario;
 			public String control;
         %>
