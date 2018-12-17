@@ -35,10 +35,10 @@ function procesarLogin(){
             }
             
             if (rol=="alum") {
-                window.location.href = "http://localhost:8080/ProyectoFinal/vista/jsp/alumno.jsp?usuario="+usu+"&control="+con;
+                window.location.href = "http://localhost:8080/examenes_final/vista/jsp/alumno.jsp?usuario="+usu+"&control="+con;
             }
             if (rol=="profe") {
-                window.location.href = "http://localhost:8080/ProyectoFinal/vista/jsp/profesor.jsp?usuario="+usu;
+                window.location.href = "http://localhost:8080/examenes_final/vista/jsp/profesor.jsp?usuario="+usu;
             }
         }        
     }
