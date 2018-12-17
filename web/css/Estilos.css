@@ -1,0 +1,133 @@
+
+
+header,nav,section,aside,footer{
+  display: block;
+  padding: 3px;
+  margin: 5px;
+}
+
+header{
+  /*background-color: #ff008a;*/
+  /*width: 100%;*/
+  height: 80px;
+  /*background: -webkit-linear-gradient(top,rgb(232, 15, 130),rgb(136, 237, 24));*/
+  background: -webkit-radial-gradient(center,circle,#932a23,#573224);
+  border-style: groove;
+  border-radius: 50px;
+
+}
+
+nav{
+  /*width: 100%;*/
+  height: 60px;
+  /*background-color: #31bafe;*/
+  background: -webkit-radial-gradient(center,circle,#804727,#572512);
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: #342820 5px -5px 10px inset;
+}
+
+aside{
+  width: 15%;
+  height: 430px;
+  /*background-color:#ac5c28;*/
+    background: -webkit-radial-gradient(center,circle,#8c4039, #2f0809);
+  float: right;
+}
+
+section{
+  width: 80%;
+  height: 430px;
+  background-color: #f1b57f;
+  float: left;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: rgba(#5680b9, 0.56) 10px -10px 20px inset;
+}
+
+footer{
+  clear: both;
+  background-color:#d9af73;
+  /*width: 100%;*/
+  height: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: rgba(#c6773d, 0.88) 2px -2px 5px inset;
+}
+
+.logo{
+  width: 7%;
+  height: 50px;
+  padding-left: 20px;
+  padding-top: 10px;
+  display: inline-block;
+}
+
+.capa{
+  width: 80%;
+  height: 50px;
+  text-align: left;
+  float: right;
+  color: white;
+}
+
+nav ul li.opcionPrincipal{
+    display: inline-block;
+    color:#ffffff;
+    
+    width: 20%;
+      margin-left: 20px;
+
+}
+.opcionP{
+    color: #d8d7d5;
+ font-size:25px;
+}
+.opciones{
+    color: #000000;
+
+  
+     
+}
+
+nav ul li ul{
+  display: none;
+  position: absolute;
+/*  background: -webkit-radial-gradient(center,circle,#5dc7e3,#4d83ec);*/
+background:#5680b9;
+width: 20%;
+margin-top: 0px;
+}
+
+a{
+  text-decoration: none;
+}
+
+nav ul li ul li:hover{
+  border-style: solid;
+  border-color:#664835;
+  border-width: 1px;
+  border-radius: 15px;
+  background-color:#cf9770;
+  width: 120px;
+}
+
+nav ul li:hover ul{
+  margin-top: 0px;
+  display: block;
+width: 20%;
+}
+nav ul li ul{
+    list-style-type: none;
+}
+table{
+    width: 80%;
+    align-content: center;
+}
+th{
+    background: #5680b9;
+}
+td{
+    background: #d8d7d5;
+    font-size: 25 px;
+}

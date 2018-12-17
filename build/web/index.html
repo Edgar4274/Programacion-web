@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script type="text/javascript" src="js/funciones.js"></script>
+    </head>
+    <body>
+        <br><br>
+        <form action="javascript:login();"  id="form-login">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="jumbotron">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <center><h2>Login</h2></center>
+                            </div>
+                            <div class="col-md-4">
+                                <!--<a href="vista/jsp/registro.jsp">
+                                <h2>Registro</h2>
+                                <hr>
+                                </a>-->
+                            </div>
+                        </div>
+                        <hr>
+                        <br>
+                        <input type="text" class="form-control" id="control"  placeholder="Numero de control" required>
+                        <br>
+                        <input type="password" class="form-control" id="pass" placeholder="Password" required="">
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <br>
+                                <div id="error"></div>
+                                <br>
+                                <input type="checkbox" class="form-check-input" id="recordar">
+                                
+                                <label class="form-check-label" for="recordar">Recordar password</label>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <hr>
+                                <center><input type="submit" class="btn btn-primary" value="Login" style="width: 150px; height: 50;"></center>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                
+                                <a href="">Recordar password?</a>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </form>
+    </body>
+</html>
