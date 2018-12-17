@@ -10,7 +10,7 @@
 <%@page import="Dao.BaseDatos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    BaseDatos baseDatos = new BaseDatos("simulador", "root", "4274");
+    BaseDatos baseDatos = new BaseDatos("simulador", "user", "1234");
     String resultado = baseDatos.hacerConexion();
     if (resultado.equals("exito")) {
         TablaLogin tablaLogin = new TablaLogin(baseDatos.getConexion());

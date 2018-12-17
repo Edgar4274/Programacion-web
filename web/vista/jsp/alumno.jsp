@@ -63,7 +63,7 @@
                         <li><a href="#" id="ic"><i class="fa fa-user"></i></a></li>
                         <li><div><%= usuario%></div></li>
                         <li><div id="men">
-                                <a href="http://localhost:8080/ProyectoFinal/"><div>salir</div></a>
+                                <a href="http://localhost:8080/examenes_final/"><div>salir</div></a>
                             </div></li>
                     </ul>
                 </div>

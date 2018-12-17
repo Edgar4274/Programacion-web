@@ -68,11 +68,16 @@ function listarMateria() {
     } else{
         
     }
-    var salida ="<h2>Agregar materia</h2><table class='table'><tr><th>Materia</th><th>Accion</th></tr>";
+    var salida ="<h2>Agregar materia</h2><table class='table'><tr><th>Grupos</th><th>Accion</th></tr><tr>";
     if (materia.length >0) {
         for (var i = 0; i < materia.length ; i++) {
-            salida+="<tr> <td>"+materia[i].materia+"</td><td><button class='btn btn-success' value='"+materia[i].id+"' onclick='agregarMat(this)'><i class='fa fa-plus-circle'></i> Agregar</button></td></option> ";
+            if (i%2==0) {
+                salida+="</tr><td><div style='background:#797575; color:#fff;'><h4>Materia: "+materia[i].materia+" </h4><h4>Maestro: "+materia[i].maestro+"</h4> <h4>Gruo: "+materia[i].grupo+" </h4><button class='btn btn-success' value='"+materia[i].id+"' onclick='agregarMat(this)'><i class='fa fa-plus-circle'></i> Agregar</button></div></td>";
+            }else{
+                salida+="<td><div style='background:#797575; color:#fff;'><h4>Materia: "+materia[i].materia+" </h4><h4>Maestro: "+materia[i].maestro+"</h4> <h4>Gruo: "+materia[i].grupo+" </h4> <button class='btn btn-success' value='"+materia[i].id+"' onclick='agregarMat(this)'><i class='fa fa-plus-circle'></i> Agregar</button></div></td>";
+            }
         }
+        salida+="</tr></table>";
         $(".jumbotron").html(salida);
     }
 }
