@@ -15,6 +15,8 @@ public class Alumno {
 	private String ap;
 	private String am;
 	private String control;
+	private String grupo;
+	private String carrera;
 
 	public int getIdAlumno() {
 		return idAlumno;
@@ -56,9 +58,29 @@ public class Alumno {
 		this.control = control;
 	}
 
+	public String getGrupo() {
+		return grupo;
+	}
+
+	public void setGrupo(String grupo) {
+		this.grupo = grupo;
+	}
+
+	public String getCarrera() {
+		return carrera;
+	}
+
+	public void setCarrera(String carrera) {
+		this.carrera = carrera;
+	}
+
 	@Override
 	public String toString() {
-		return "Alumno{" + "idAlumno=" + idAlumno + ", nombre=" + nombre + ", ap=" + ap + ", am=" + am + ", control=" + control + '}';
+		return "Alumno{" + "idAlumno=" + idAlumno + ", nombre=" + nombre + ", ap=" + ap + ", am=" + am + ", control=" + control + ", grupo=" + grupo + ", carrera=" + carrera + '}';
 	}
+	
+	
+
+	
 	
 }

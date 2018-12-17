@@ -12,18 +12,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Alumno;
+import modelo.Examen;
 import modelo.Materia;
 
 /**
  *
  * @author const
  */
-public class TablaAlumnos {
+public class TablaDocente {
 	private Connection conexion;
     private Statement st;
     private ResultSet rs;
 
-    public TablaAlumnos(Connection conexion) {
+    public TablaDocente(Connection conexion) {
         this.conexion = conexion;
         this.crearSentecia();
     }
@@ -39,7 +40,7 @@ public class TablaAlumnos {
     
     public List getListadoAlumnosProfesor(String nombreProfesor){
         List<Alumno> salida= new ArrayList();
-        String sql = "SELECT * FROM persona p join lisgrup lg on p.id_per = lg.id_per join grupo g on g.id_grup = lg.id_grup join usuario u on u.control = p.control where p.nombre not like '%"+nombreProfesor+"%'";
+        String sql = "SELECT * FROM persona p join lisgrup lg on p.id_per = lg.id_per join grupo g on g.id_grup = lg.id_grup join usuario u on u.control = p.control join carrera c on c.id_car = g.id_car where p.nombre not like '%"+nombreProfesor+"%'";
         try {
             rs = st.executeQuery(sql);
             
@@ -50,6 +51,8 @@ public class TablaAlumnos {
 				alumno.setAp(rs.getString("paterno"));
 				alumno.setAm(rs.getString("materno"));
 				alumno.setControl(rs.getString("control"));
+				alumno.setGrupo(rs.getString("grupo"));
+				alumno.setCarrera(rs.getString("carrera"));
                 salida.add(alumno);
             }
             return salida;
@@ -60,18 +63,40 @@ public class TablaAlumnos {
         
         return null;
     }
-    
-    public String getInsert(String control, String materia){
+	
+	public List getListadoExamenes(){
+        List<Examen> salida= new ArrayList();
+        String sql = "SELECT * FROM examen";
         try {
-            String sql = "INSERT INTO lisgrup VALUES(null, "+control+", "+materia+")";
-            int n = st.executeUpdate(sql);
-            if (n == 1) {
-                return "exitoso";
-            } else {
-                return "error de insercion";
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Examen examen = new Examen();
+                examen.setId(Integer.parseInt(rs.getString("id_exa")));
+                examen.setNombre(rs.getString("nombre"));
+				examen.setUnidad(Integer.parseInt(rs.getString("unidad")));
+				examen.setIdGrupo(Integer.parseInt(rs.getString("id_grup")));
+                salida.add(examen);
             }
+            return salida;
         } catch (SQLException ex) {
-            return "error sql al insertar " + ex.toString();
+
+            System.out.println(ex.getMessage());
         }
+        
+        return null;
     }
+    
+//    public String getExamenes(String control, String materia){
+//        try {
+//            String sql = "INSERT INTO lisgrup VALUES(null, "+control+", "+materia+")";
+//            int n = st.executeUpdate(sql);
+//            if (n == 1) {
+//                return "exitoso";
+//            } else {
+//                return "error de insercion";
+//            }
+//        } catch (SQLException ex) {
+//            return "error sql al insertar " + ex.toString();
+//        }
+//    }
 }

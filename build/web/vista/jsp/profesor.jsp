@@ -33,9 +33,13 @@
             }
         </style>
     </head>
-    <body>
-        <%! public String usuario;%>
-        <% usuario = request.getParameter("usuario");%>
+    <body onload="cargaDocente();">
+        <%! public String usuario;
+			public String control;
+        %>
+        <% usuario = request.getParameter("usuario");
+			control = request.getParameter("control");
+        %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,10 +49,10 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" onclick=""><i class="fa fa-plus-circle"></i> Agregar materia  <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" onclick=""><i class="fa fa-plus-circle"></i> Agregar Materia  <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fa fa-files-o"></i> Agregar examen <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
+                        <a id="ex-sh" class="nav-link" href="#" onclick="examenDoc();"><i class="fa fa-files-o"></i> Examenes <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#"><i class="fa fa-users"></i> Grupos <i class="fa fa-caret-down"></i> <span class="sr-only">(current)</span></a>
@@ -68,26 +72,26 @@
         <section style="padding-top: 25px;">
 			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4" style="display: none;">
 						<div class="jumbotron">
 							<h2>Escritorio</h2>
 						</div>                    
 					</div>
-					<div class="col-md-8">
-						<div class="container">
-							<h2>Examenes</h2>
-						</div>                    
+					<div id="ex-show" class="col-md-8" style="display:none;">
+						<h2>Examenes</h2>
+						<div class="container" id="examenes-field" >
+						</div> 	
 					</div>
-
 				</div>
 				<div class="row">
-					<div class="col-md-4">
-						<div class="container">
-							<h4>Alumnos</h4>
+					<div class="col-md-12" >
+						<h4>Alumnos cursando</h4>
+						<div class="container" id="alumnos-field">	
 						</div>                    
 					</div>
 				</div>
 			</div>
+			<input type="hidden" class="form-control" value="<%= usuario%>" id="ctrl">
         </section>
 </html>
 
