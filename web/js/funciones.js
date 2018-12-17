@@ -159,17 +159,16 @@ function listaExa(){
         var fin = respuesta.indexOf(']');
         var contenido = respuesta.substring(inicio, fin+1);
         examen=JSON.parse(contenido);
-        alert(contenido);
     } else{
         
     }
-    var salida ="<h2>Examen Disponible</h2><table class='table'><tr><th>Grupos</th><th>Accion</th></tr><tr>";
+    var salida ="<h2>Examen Disponible</h2><table class='table'><tr><th colspan='2'>Examen</th></tr><tr>";
     if (examen.length >0) {
         for (var i = 0; i < examen.length ; i++) {
             if (i%2==0) {
-                salida+="</tr><td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Examen: "+examen[i].examen+" </h4> <h4>Unidad: "+examen[i].unidad+" </h4><button class='btn btn-success' value='"+examen[i].id+"' onclick=''><i class='fa fa-eye'></i> ver</button></div></td>";
+                salida+="</tr><td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Examen: "+examen[i].examen+" </h4> <h4>Unidad: "+examen[i].unidad+" </h4><button class='btn btn-primary' value='"+examen[i].id+"' onclick=''><i class='fa fa-share'></i> Iniciar</button></div></td>";
             }else{
-                salida+="<td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Ubidad: "+examen[i].examen+" </h4> <h4>Ubidad: "+examen[i].unidad+" </h4> <button class='btn btn-success' value='"+examen[i].id+"' onclick=''><i class='fa fa-eye'></i> ver</button></div></td>";
+                salida+="<td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Examen: "+examen[i].examen+" </h4> <h4>Unidad: "+examen[i].unidad+" </h4> <button class='btn btn-primary' value='"+examen[i].id+"' onclick=''><i class='fa fa-share'></i> Iniciar</button></div></td>";
             }
         }
         salida+="</tr></table>";
