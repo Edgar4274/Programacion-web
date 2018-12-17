@@ -11,18 +11,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Materia;
+import modelo.Grupo;
 
 /**
  *
  * @author edal_
  */
-public class TablaMateria {
+public class TablaGrupo {
     private Connection conexion;
     private Statement st;
     private ResultSet rs;
 
-    public TablaMateria(Connection conexion) {
+    public TablaGrupo(Connection conexion) {
         this.conexion = conexion;
         this.crearSentecia();
     }
@@ -36,17 +36,19 @@ public class TablaMateria {
         }
     }
     
-    public List getListado(){
-        List<Materia> salida= new ArrayList();
-        String sql = "SELECT * FROM materia where id_mat  like '%%'";
+    public  List getGrupo(){
+        List<Grupo> salida= new ArrayList<>();
+        String sql = "select id_grup, grupo, materia, nombre from grupo g join materia m on g.id_mat=m.id_mat join persona p on g.id_per=p.id_per where fecha between DATE_SUB(CURDATE(), INTERVAL 4 month) and curdate()";
         try {
             rs = st.executeQuery(sql);
             
             while (rs.next()) {
-                Materia materia = new Materia();
-                materia.setId(rs.getString("id_mat"));
-                materia.setMateria(rs.getString("materia"));
-                salida.add(materia);
+                Grupo g = new Grupo();
+                g.setId(rs.getString("id_grup"));
+                g.setGrupo(rs.getString("grupo"));
+                g.setMateria(rs.getString("materia"));
+                g.setMaestro(rs.getString("nombre"));
+                salida.add(g);
             }
             return salida;
         } catch (SQLException ex) {
@@ -55,19 +57,5 @@ public class TablaMateria {
         }
         
         return null;
-    }
-    
-    public String getInsert(String control, String materia){
-        try {
-            String sql = "INSERT INTO lisgrup VALUES(null, "+control+", "+materia+")";
-            int n = st.executeUpdate(sql);
-            if (n == 1) {
-                return "exitoso";
-            } else {
-                return "error de insercion";
-            }
-        } catch (SQLException ex) {
-            return "error sql al insertar " + ex.toString();
-        }
     }
 }
