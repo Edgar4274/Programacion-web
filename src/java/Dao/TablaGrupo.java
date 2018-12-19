@@ -36,9 +36,9 @@ public class TablaGrupo {
         }
     }
     
-    public  List getGrupo(){
+    public  List getGrupo(String con){
         List<Grupo> salida= new ArrayList<>();
-        String sql = "select id_grup, grupo, materia, nombre from grupo g join materia m on g.id_mat=m.id_mat join persona p on g.id_per=p.id_per where fecha between DATE_SUB(CURDATE(), INTERVAL 4 month) and curdate()";
+        String sql = "select id_grup, grupo, materia, nombre from grupo g join materia m on g.id_mat=m.id_mat join persona p on g.id_per=p.id_per where  g.id_grup not in(select id_grup from lisgrup where id_per="+con+") and fecha between DATE_SUB(CURDATE(), INTERVAL 4 month) and curdate()";
         try {
             rs = st.executeQuery(sql);
             

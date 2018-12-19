@@ -9,10 +9,10 @@
     String resultado = baseDatos.hacerConexion();
     if (resultado.equals("exito")) {
         TablaGrupo tablaGrupo = new TablaGrupo(baseDatos.getConexion());
-        List<Grupo> grupo = tablaGrupo.getGrupo();
+        List<Grupo> grupo = tablaGrupo.getGrupo(request.getParameter("control"));
         Gson datos = new Gson();
         out.print(datos.toJson(grupo));
-        //System.out.println(grupo);
+        System.out.println(request.getParameter("control"));
     } else {
         System.out.println("mala iris");
     }

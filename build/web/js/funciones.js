@@ -22,13 +22,14 @@ function login(){
 }
 function procesarLogin(){
     if (ajax.readyState==4 && ajax.status==200) {
-        var respuesta = ajax.responseText;
         var inicio = respuesta.indexOf('{');
         var fin = respuesta.indexOf('}');
         var contenido = respuesta.substring(inicio, fin+1);
         if (contenido=="{}") {
+            console.log("hola");
             document.getElementById("error").innerHTML="<p style='color: red; fontsize: 18px;'>Usurio o contraseña incorrecta</p>";
         } else {
+            console.log("hola");
             contenido= "["+contenido+"]";
             logi=JSON.parse(contenido);
             var rol="";
@@ -39,13 +40,16 @@ function procesarLogin(){
                 rol=logi[i].rol;
                 usu = logi[i].nombre;
             }
-            
             if (rol=="alum") {
                 window.location.href = "http://localhost:8080/examenes_final/vista/jsp/alumno.jsp?usuario="+usu+"&control="+con;
             }
             if (rol=="profe") {
                 window.location.href = "http://localhost:8080/examenes_final/vista/jsp/profesor.jsp?usuario="+usu;
             }
+            if (rol=="admin"){
+                window.location.href = "http://localhost:8080/examenes_final/vista/jsp/administrador.jsp?usuario="+usu+"&control="+con;
+            }
+            
         }        
     }
 }
@@ -65,6 +69,7 @@ function login() {
 }
 function procesarLogin() {
 	if (ajax.readyState == 4 && ajax.status == 200) {
+            alert(ajax.responseText);
 		var respuesta = ajax.responseText;
 		var inicio = respuesta.indexOf('{');
 		var fin = respuesta.indexOf('}');
@@ -102,7 +107,7 @@ function materiasAl() {
 		ajax = new ActiveXObject(microsofXMLHTTP);
 	}
 	ajax.onreadystatechange = listarMateria;
-	ajax.open("GET", "../../peticion/listar.jsp", true);
+	ajax.open("GET", "../../peticion/listar.jsp?control="+$("#ctrl").val(), true);
 	ajax.send();
 }
 
@@ -176,9 +181,9 @@ function listaG(){
     if (grupo.length >0) {
         for (var i = 0; i < grupo.length ; i++) {
             if (i%2==0) {
-                salida+="</tr><td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Materia: "+grupo[i].materia+" </h4> <h4>Gruo: "+grupo[i].grupo+" </h4><button class='btn btn-success' value='"+grupo[i].id+"' onclick='lisExamen(this)'><i class='fa fa-eye'></i> ver</button></div></td>";
+                salida+="</tr><td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Materia: "+grupo[i].materia+" </h4> <h4>Gruo: "+grupo[i].grupo+" </h4><button class='btn btn-success' value='"+grupo[i].id+"' onclick='lisExamen(this)'><i class='fa fa-book'></i> Examenes</button></div></td>";
             }else{
-                salida+="<td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Materia: "+grupo[i].materia+" </h4> <h4>Gruo: "+grupo[i].grupo+" </h4> <button class='btn btn-success' value='"+grupo[i].id+"' onclick='lisExamen(this)'><i class='fa fa-eye'></i> ver</button></div></td>";
+                salida+="<td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Materia: "+grupo[i].materia+" </h4> <h4>Gruo: "+grupo[i].grupo+" </h4> <button class='btn btn-success' value='"+grupo[i].id+"' onclick='lisExamen(this)'><i class='fa fa-book'></i> Examenes</button></div></td>";
             }
         }
         salida+="</tr></table>";
@@ -207,20 +212,44 @@ function listaExa(){
     } else{
         
     }
-    var salida ="<h2>Examen Disponible</h2><table class='table'><tr><th colspan='2'>Examen</th></tr><tr>";
+    var salida ="<h2>Examen Disponible</h2>";
+    salida +="<table class='table'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>nombre</th><th scope='col'>Unidad</th><th scope='col'>Acciones</th></tr></thead><tbody>";
     if (examen.length >0) {
+        var j=1;
         for (var i = 0; i < examen.length ; i++) {
-            if (i%2==0) {
-                salida+="</tr><td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Examen: "+examen[i].examen+" </h4> <h4>Unidad: "+examen[i].unidad+" </h4><button class='btn btn-primary' value='"+examen[i].id+"' onclick=''><i class='fa fa-share'></i> Iniciar</button></div></td>";
-            }else{
-                salida+="<td style='width:50%;'><div style='background:#797575; color:#fff;'><h4>Examen: "+examen[i].examen+" </h4> <h4>Unidad: "+examen[i].unidad+" </h4> <button class='btn btn-primary' value='"+examen[i].id+"' onclick=''><i class='fa fa-share'></i> Iniciar</button></div></td>";
-            }
+            j=j+i;
+            salida+="<tr><td>"+j+"</td><td>"+examen[i].examen+" </td> <td>"+examen[i].unidad+" </td><td><button class='btn btn-primary' value='"+examen[i].id+"' onclick='inicioExa(this)'><i class='fa fa-share'></i> Iniciar</button></td></tr>";
         }
-        salida+="</tr></table>";
+        salida+="</tbody></table>";
         $(".jumbotron").html(salida);
     }
 }
 
+function inicioExa(e){
+    if (window.XMLHttpRequest) {
+        ajax = new XMLHttpRequest();
+        
+    } else {
+        ajax = new ActiveXObject(microsofXMLHTTP);
+    }
+    ajax.onreadystatechange = inicioEx;
+    ajax.open("GET", "../../peticion/peticionAlumno.jsp?examen="+e.value+"&opc=inicioExa", true);
+    ajax.send();
+}
+
+function inicioEx(){
+    if (ajax.readyState==4 && ajax.status==200) {
+        var respuesta = ajax.responseText;
+        var inicio = respuesta.indexOf('[');
+        var fin = respuesta.indexOf(']');
+        var contenido = respuesta.substring(inicio, fin);
+        //examen=JSON.parse(contenido);
+        alert(contenido);
+    } else{
+        
+    }
+    
+}
 
 $(document).ready(function () {
 	$("#ic").click(function () {
