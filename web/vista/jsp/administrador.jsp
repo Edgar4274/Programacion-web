@@ -1,6 +1,6 @@
 <%-- 
-    Document   : alumno
-    Created on : 12/12/2018, 12:23:37 AM
+    Document   : administrador
+    Created on : 18/12/2018, 07:36:21 PM
     Author     : edal_
 --%>
 
@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno</title>
+        <title>Administrador</title>
+    <title>Alumno</title>
         <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../css/bootstrap.min.css">
         <script type="text/javascript" src="../../js/jquery.js"></script>
@@ -49,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" onclick="materiasAl()">Agregar grupo <i class="fa fa-caret-down" onclick="materiasAl()"></i><span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="#" onclick="materiasAl()">Agregar usuario <i class="fa fa-caret-down" onclick="materiasAl()"></i><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#" onclick="materiasDis()">Mis materias <i class="fa fa-caret-down"></i><span class="sr-only">(current)</span></a>

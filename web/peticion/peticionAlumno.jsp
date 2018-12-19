@@ -36,8 +36,12 @@
         if (opc.equals("lisexamen")) {
             List<Examen> examens = tablaExamen.getExamen(request.getParameter("grupo"));
             Gson datos = new Gson();
-            out.print(datos.toJson(examens ));
+            out.print(datos.toJson(examens));
             System.out.println(examens);
+        }
+        if (opc.equals("inicioExa")) {
+            Gson datos = new Gson();
+            out.print(datos.toJson("[iris]"));
         }
     } else {
         System.out.println("mala iris");
